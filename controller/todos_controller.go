@@ -10,9 +10,6 @@ import (
 )
 
 func GetAllTodo(e *echo.Echo, db *sql.DB) {
-	e.GET("/", func(ctx echo.Context) error {
-		return ctx.String(http.StatusOK, "Hello human")
-	})
 
 	e.GET("/todos", func(ctx echo.Context) error {
 		rows, err := db.Query(
