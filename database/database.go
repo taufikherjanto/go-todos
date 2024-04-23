@@ -1,9 +1,23 @@
 package database
 
-import "database/sql"
+import (
+	"database/sql"
+	"fmt"
+
+	_ "github.com/go-sql-driver/mysql"
+)
 
 func InitDb() *sql.DB {
-	dsn := "root@tcp(localhost:3306)/eduworks"
+	const (
+		// config database
+		username = "root"
+		password = ""
+		host     = "localhost"
+		port     = "3306"
+		dbname   = "eduwork"
+	)
+
+	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", username, password, host, port, dbname)
 	db, err := sql.Open("mysql", dsn)
 
 	if err != nil {
